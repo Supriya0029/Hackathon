@@ -1,0 +1,45 @@
+FORGERY
+
+{
+ 'attack': 'Forgery',
+ 'modified': True,
+ 'description': 'Digital signature was altered after generation.',
+ 'expected': 0.97,
+ 'observed': 0.63,
+ 'verification_result': False
+}
+
+--------------------------------------------------
+
+IMPERSONATION
+
+{
+ 'attack': 'Impersonation',
+ 'authorized_identity': 'Alice',
+ 'claimed_identity': 'Mallory',
+ 'identity_match': False,
+ 'verification_result': False
+}
+
+--------------------------------------------------
+
+REPLAY
+
+{
+ 'attack': 'Replay',
+ 'signature_id': 'd9e9f5c2-4b87-4a8f-a962-...',
+ 'reused': True,
+ 'verification_result': False
+}
+
+--------------------------------------------------
+
+QUANTUM CHANNEL MANIPULATION
+
+{
+ 'attack': 'Quantum Channel Manipulation',
+ 'channel_modified': True,
+ 'expected_qber': 0.021,
+ 'observed_qber': 0.197,
+ 'verification_result': False
+}
