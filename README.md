@@ -1,151 +1,177 @@
-# Cybersecurity Attack Simulation Module
+# Quantum Engine Module
 
 ## Overview
 
-This module simulates four attacks required by the SIH problem statement.
+This module implements the quantum simulation component required for the SIH project.
 
-The module does NOT perform real attacks.
+The module provides:
 
-It only generates controlled attack scenarios that can be consumed by the Detection Engine.
+- Qubit simulation
+- Superposition
+- Bell State creation
+- Entanglement
+- Quantum Teleportation
+- Pauli Operations
+- Measurement
+- Measurement Statistics
+
+This module is independent and can be integrated with the Detection Engine and Attack Engine later.
 
 ---
 
-## Implemented Attacks
+## Technologies Used
 
-### 1. Forgery Attack
+- Python 3.x
+- Qiskit
+- Qiskit Aer Simulator
+- NumPy
 
-Description:
+---
 
-A digital signature is modified after it is generated.
+## Folder Structure
 
-Simulation:
+MEMBER_2_QUANTUM/
 
-Expected verification score and observed score are intentionally mismatched.
+├── quantum_engine.py
 
-Output:
+├── requirements.txt
 
+├── README.md
+
+└── sample_output/
+
+    └── sample_result.txt
+
+---
+
+## Installation
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+## Run
+
+```bash
+python quantum_engine.py
+```
+
+---
+
+## Functions
+
+### create_bell_state()
+
+Creates an entangled Bell state using:
+
+- Hadamard Gate
+- CNOT Gate
+
+Returns:
+
+```python
 {
-    "attack": "Forgery",
-    "modified": true,
-    "expected": 0.95,
-    "observed": 0.60
+    "operation": "Bell State",
+    "counts": {...}
 }
-
-Detection Engine Use:
-
-Compare expected vs observed values and flag abnormal deviation.
+```
 
 ---
 
-### 2. Impersonation Attack
+### create_superposition()
 
-Description:
+Creates a qubit in superposition using a Hadamard gate.
 
-An unauthorized identity attempts to sign as another user.
-
-Simulation:
-
-Authorized identity and claimed identity do not match.
-
-Output:
-
-{
-    "attack": "Impersonation",
-    "authorized_identity": "Alice",
-    "claimed_identity": "Mallory"
-}
-
-Detection Engine Use:
-
-Check identity mismatch.
+Returns measurement statistics.
 
 ---
 
-### 3. Replay Attack
+### apply_pauli_x()
 
-Description:
+Applies Pauli-X gate.
 
-An old accepted signature/session is reused.
-
-Simulation:
-
-A signature ID is marked as previously seen.
-
-Output:
-
-{
-    "attack": "Replay",
-    "signature_id": "...",
-    "reused": true
-}
-
-Detection Engine Use:
-
-Maintain database of used signature IDs or nonces.
-
-Reject reused IDs.
+Equivalent to a quantum NOT operation.
 
 ---
 
-### 4. Quantum Channel Manipulation
+### apply_pauli_z()
 
-Description:
+Applies Pauli-Z gate.
 
-Quantum communication is altered during transmission.
-
-Simulation:
-
-Observed QBER is increased above normal level.
-
-Output:
-
-{
-    "attack": "Quantum Channel Manipulation",
-    "expected_qber": 0.02,
-    "observed_qber": 0.18
-}
-
-Detection Engine Use:
-
-Monitor QBER threshold.
-
-If observed QBER exceeds threshold, trigger alert.
+Changes phase of the qubit.
 
 ---
 
-## Inputs
+### quantum_teleportation()
+
+Simulates:
+
+1. State Preparation
+2. Bell Pair Creation
+3. Entanglement
+4. Bell-State Measurement
+5. Pauli Correction
+6. State Recovery
+
+Returns measurement counts.
+
+---
+
+## Input
 
 No external input required.
 
-Each function generates a simulated attack scenario.
+The simulator internally creates quantum states.
 
 ---
 
-## Outputs
+## Output
 
-Python dictionary containing:
+Python dictionaries containing:
 
-- attack type
-- attack indicators
-- verification result
-- metrics
-- timestamp
+- Operation name
+- Measurement counts
+- Statistics
+
+Example:
+
+```python
+{
+    "operation": "Bell State",
+    "counts": {
+        "00": 512,
+        "11": 512
+    }
+}
+```
 
 ---
 
-## Integration
+## Dependencies
 
-Import:
+- qiskit
+- qiskit-aer
+- numpy
 
-from attack_engine import AttackEngine
+---
 
-engine = AttackEngine()
+## Limitations
 
-result = engine.simulate_forgery()
+- Uses a simulator, not real quantum hardware.
+- Intended for educational and prototype purposes.
+- Does not implement advanced quantum algorithms.
+- No graphical interface included.
 
-Pass result directly to the Detection Engine.
+---
 
-No changes are required in:
+## Future Integration
 
-- Quantum Engine
+Can be integrated with:
+
+- Attack Engine
 - Detection Engine
+- Dashboard/UI Module
+
+for full SIH system demonstration.
