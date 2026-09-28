@@ -1,0 +1,31 @@
+Bell State
+
+{
+ 'operation': 'Bell State',
+ 'counts': {
+   '00': 512,
+   '11': 512
+ }
+}
+
+Superposition
+
+{
+ 'operation': 'Superposition',
+ 'counts': {
+   '0': 505,
+   '1': 519
+ }
+}
+
+Quantum Teleportation
+
+{
+ 'operation': 'Quantum Teleportation',
+ 'counts': {
+   '000': 250,
+   '011': 255,
+   '101': 260,
+   '110': 259
+ }
+}
